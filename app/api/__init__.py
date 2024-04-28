@@ -1,7 +1,10 @@
-from flask import Blueprint, jsonify
+# ./app/api/__init__.py
+
+from flask import Blueprint
+from .v1 import api_v1
+
 
 api_bp = Blueprint('api', __name__)
 
-@api_bp.route('/hello')
-def hello_world():
-    return jsonify({'message': 'Hola Mundo!'})
+api_bp.register_blueprint(api_v1)
+
